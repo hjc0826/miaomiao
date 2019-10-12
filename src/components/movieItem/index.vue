@@ -1,7 +1,7 @@
 <template>
   <div class="movie_item">
     <div class="pic_show">
-        <img src="" alt="">
+        <img src="http://p1.meituan.net/128.180/movie/2173fbb7096b8271593d48c37ac83c3f2766388.jpg" alt="">
     </div>
     <div class="info_list">
       <h2>
@@ -33,7 +33,7 @@ export default {
   border-bottom: 1px solid #e6e6e6;
   padding-bottom: 10px;
 }
-.movie_item .pic_show {
+.movie_item .pic_show img{
   width: 64px;
   height: 90px;
 }

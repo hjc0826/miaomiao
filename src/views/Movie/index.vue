@@ -2,17 +2,17 @@
   <div>
     <Header title="喵喵电影" />
     <div class="movie_menu">
-      <div class="city_name">
+      <router-link class="city_name" to="/movie/city" tag="div">
         <span>北京</span>
         <i class="iconfont icon-xia"></i>
-      </div>
+      </router-link>
       <div class="hot_switch">
-        <div class="hot_item_active">正在热映</div>
-        <div class="hot_item">即将上映</div>
+        <router-link class="hot_item" tag="div" to="/movie/nowplaying">正在热映</router-link>
+        <router-link class="hot_item" tag="div" to="/movie/comingsoon">即将上映</router-link>
       </div>
-      <div class="search_entry">
+      <router-link class="search_entry" tag="div" to="/movie/search">
         <i class="iconfont icon-tubiaolunkuo-"></i>
-      </div>
+      </router-link>
     </div>
     <keep-alive>
       <router-view />
@@ -22,13 +22,19 @@
 </template>
 
 <script>
-import Header from "@/components/header";
-import Tabbar from "@/components/tabBar";
+import Header from "@/components/header"
+import Tabbar from "@/components/tabBar"
+import { getCityList } from '../../axios/api.js'
 export default {
   name: "Movie",
   components: {
     Header,
     Tabbar
+  },
+  created() {
+    let fuc = getCityList({
+      msg : 'ok'
+    })
   }
 };
 </script>
@@ -61,11 +67,11 @@ export default {
   margin: 0 12px;
   font-weight: 700;
 }
-.movie_menu .hot_switch .hot_item_active {
+.movie_menu .router-link-active{
   color: #ef4238;
   border-bottom: 2px solid #ef4238;
 }
-/* .movie_menu .hot_switch .hot_item_active */
+
 .movie_menu .search_entry {
   margin-right: 20px;
   height: 100%;

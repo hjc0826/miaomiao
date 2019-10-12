@@ -11,7 +11,7 @@ import MovieItem from "@/components/movieItem";
 export default {
   name: "nowplaying",
   created() {
-      
+   
   },
   components: {
     MovieItem

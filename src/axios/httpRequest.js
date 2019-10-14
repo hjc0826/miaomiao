@@ -33,18 +33,14 @@ http.interceptors.request.use(config => {
     // 请求响应处理
 http.interceptors.response.use(
     response => {  
-        //成功请求到数据
-        // app.$vux.loading.hide();
-        // //这里根据后端提供的数据进行对应的处理
-        // if (response.data.msg === "ok") {
-        //     return response.data;
-        // } else {
-        // //常规错误处理
-        //     app.$vux.toast.show({  
-        //         type: 'warn',
-        //         text: response.data.data.msg
-        //     });
-        // }
+        // 成功请求到数据
+        //这里根据后端提供的数据进行对应的处理
+        if (response.data.msg === "ok") {
+            return response.data;
+        } else {
+        //常规错误处理
+           console.log('error infomation')
+        }
     },
         //响应错误处理
     error => {  

@@ -35,6 +35,7 @@ export default {
     let fuc = getCityList({
       msg : 'ok'
     })
+    // this.$axios.get('/apis/4/news/latest')
   }
 };
 </script>

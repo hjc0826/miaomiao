@@ -1,17 +1,19 @@
 <template>
   <div class="city_index">
     <ul>
-      <li>A</li>
-      <li>B</li>
-      <li>C</li>
-      <li>D</li>
+      <li v-for="item in index" :key="item.id">{{item.index}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "CityList"
+  name: "CityList",
+  props:{
+    index:{
+      type : [Object,Array]
+    }
+  }
 };
 </script>
 

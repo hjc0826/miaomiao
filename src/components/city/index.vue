@@ -4,34 +4,78 @@
       <div class="city_hot">
         <h2>热门城市</h2>
         <ul class="clearfix">
-          <li>北京</li>
-          <li>上海</li>
-          <li>广州</li>
-          <li>天津</li>
-          <li>杭州</li>
-          <li>南京</li>
-          <li>成都</li>
+          <li v-for="item in hotCity" :key="item.id">{{item.nm}}</li>
         </ul>
       </div>
       <div class="city_sort">
-          <IndexCity />
+          <IndexCity v-for="(item,index) in indexCity" :key="index" :itemData="item"/>
       </div>
     </div>
-    <div class="city_index">
-        <CityList />
-    </div>
+    <CityList :index="indexCity"/>
   </div>
 </template>
 
 <script>
 import IndexCity from './components/index_city'
 import CityList from './components/city_list'
+import { getCityList } from '../../axios/api'
 export default {
     name : 'city',
+    data() {
+      return {
+        indexCity:[],
+        hotCity:[]
+      }
+    },
     components:{
         IndexCity,
         CityList
-    }
+    },
+    mounted() {
+      // 获取城市数据
+      getCityList().then( res =>{
+        var cities = res.data.cities
+        this.formatCity(cities)
+      })
+    },
+    methods: {
+      formatCity(cities){
+        for(var i = 0; i < cities.length ;i++){
+          
+          if(cities[i].isHot){
+            this.hotCity.push(cities[i])
+          }
+            var firstLetter = cities[i].py.substring(0,1).toUpperCase()
+            let self = this
+            if(toCom(firstLetter,self)){
+              this.indexCity.push({
+                index:firstLetter,
+                list :[
+                  cities[i]
+                ]
+              })
+            }
+            else{
+              for(var j = 0;j < this.indexCity.length ;j++){
+                if(this.indexCity[j].index === firstLetter){
+                  this.indexCity[j].list.push(cities[i])
+                }
+              }
+            }
+        } 
+        // 判断indexCity中是否有index的城市
+        function toCom(firstLetter,self){
+          for(var i = 0;i < self.indexCity.length ; i++){
+            if(self.indexCity[i].index === firstLetter){
+              return false
+            }
+          }
+          return true
+        }
+        this.indexCity.sort((a, b) => a.index.localeCompare(b.index, 'en', {sensitivity: 'base'}))
+      }
+      
+    },
 };
 </script>
 
@@ -40,6 +84,7 @@ export default {
         margin-top: 20px;
         display: flex;
         width: 100%;
+        position: relative;
     }
     .city_body .city_list{
         flex: 1;

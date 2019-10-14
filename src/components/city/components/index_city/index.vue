@@ -1,18 +1,27 @@
 <template>
   <div class="index_card">
-    <h2>A</h2>
+    <h2>{{itemData.index}}</h2>
     <ul>
-        <li>阿拉善</li>
-        <li>阿拉善</li>
-        <li>阿拉善</li>
-        <li>阿拉善</li>
+        <li v-for="item in itemData.list" :key="item.id">{{item.nm}}</li>
     </ul>
   </div>
 </template>
 
 <script>
 export default {
-  name: "IndexCity"
+  name: "IndexCity",
+  props : {
+    indexCity : [Object,Array],
+    itemData : Object
+  },
+  created() {
+    
+  },
+  data() {
+    return {
+      cityList : null
+    }
+  },
 };
 </script>
 

@@ -11,6 +11,7 @@ module.exports = {
     proxy: {
       '/apis': {
         target: 'http://39.97.33.178/api',
+        // target: 'https://news-at.zhihu.com/api',
         ws: true,  
         changeOrigin: true, 
         pathRewrite: {

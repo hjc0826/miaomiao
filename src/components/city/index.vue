@@ -81,10 +81,12 @@ export default {
 
 <style lang="" scoped>
     .city_body{
-        margin-top: 20px;
         display: flex;
         width: 100%;
-        position: relative;
+        position: absolute;
+        top: 0;
+        bottom: 0;
+        margin-top: 95px;
     }
     .city_body .city_list{
         flex: 1;
@@ -118,5 +120,6 @@ export default {
         flex-direction: column;
         justify-content: center;
         border-left: 1px solid #e6e6e6;
+        z-index: 11;
     }
 </style>

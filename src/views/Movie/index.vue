@@ -1,6 +1,7 @@
 <template>
   <div>
     <Header title="喵喵电影" />
+  
     <div class="movie_menu">
       <router-link class="city_name" to="/movie/city" tag="div">
         <span>北京</span>
@@ -14,10 +15,13 @@
         <i class="iconfont icon-tubiaolunkuo-"></i>
       </router-link>
     </div>
+
     <keep-alive>
       <router-view />
     </keep-alive>
+
     <Tabbar />
+
   </div>
 </template>
 

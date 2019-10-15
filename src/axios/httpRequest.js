@@ -3,7 +3,7 @@ import qs from 'qs'
 // import app from "../main.js"
 
 const http = axios.create({
-    baseURL: process.env.VUE_APP_BASE_URL_API,
+    baseURL: process.env.VUE_APP_BASE_API,
     timeout: 5000 
 })
 

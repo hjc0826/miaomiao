@@ -1,12 +1,12 @@
 <template>
   <div class="movie_item">
     <div class="pic_show">
-        <img :src="MovieItem.img | setWH('128.180')" alt="">
+        <img :src="MovieItem.img | setWH('128.180')" alt=""/>
     </div>
     <div class="info_list">
       <h2>
             {{MovieItem.nm}}
-            <img :src="MovieItem.version ? '/imges/3dImax.png' : '' " alt="">
+            <img :src="MovieItem.version ? '../../assets/imges/imax.png' : '' " alt=""/>
       </h2>
       <p>
         观众评价

@@ -13,7 +13,7 @@ http.interceptors.request.use(config => {
     // app.$vux.loading.show({
     //     text: '数据加载中……'
     // });
- 
+    console.log(config)
     config.method === 'post'
         ? config.data = qs.stringify({...config.data})
         : config.params = {...config.params};

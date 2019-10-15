@@ -18,3 +18,12 @@ export const getCityList = data => {
     })
 }
 
+//获取即将上映
+export const getComingsoon = data => {
+    return http({
+        url:'/apis/movieComingList?cityId=1',
+        method : 'get',
+        data
+    })
+}
+

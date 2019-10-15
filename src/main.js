@@ -3,8 +3,9 @@ import App from './App.vue'
 import router from './routes'
 import store from './store'
 import axios from 'axios'
+import * as filters from './filters'
 
-Vue.prototype.$axios = axios
+Object.keys(filters).forEach(key => Vue.filter(key,filters[key]))
 
 Vue.config.productionTip = false
 

@@ -1,27 +1,31 @@
 <template>
   <div class="movie_item">
     <div class="pic_show">
-        <img src="http://p1.meituan.net/128.180/movie/2173fbb7096b8271593d48c37ac83c3f2766388.jpg" alt="">
+        <img :src="MovieItem.img | setWH('128.180')" alt="">
     </div>
     <div class="info_list">
       <h2>
-            中国机长
-            <img src="" alt="">
+            {{MovieItem.nm}}
+            <img :src="MovieItem.version ? '/imges/3dImax.png' : '' " alt="">
       </h2>
       <p>
-        观众评
-        <span class="grade">9.4</span>
+        观众评价
+        <span class="grade">{{MovieItem.sc}}</span>
       </p>
-      <p>主演: 张涵予,欧豪,杜江</p>
-      <p>今天227家影院放映3193场</p>
+      <p>{{MovieItem.star}}</p>
+      <p>{{MovieItem.showInfo}}</p>
     </div>
-    <div class="btn_mall">购票</div>
+    <div class="btn_mall">{{tag}}</div>
   </div>
 </template>
 
 <script>
 export default {
-  name: "MovieItem"
+  name: "MovieItem",
+  props:{
+    MovieItem : Object,
+    tag :String
+  }
 };
 </script>
 

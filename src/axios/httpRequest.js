@@ -1,6 +1,6 @@
 import axios from 'axios'
 import qs from 'qs'
-// import app from "../main.js"
+import store from '@/store'
 
 const http = axios.create({
     baseURL: process.env.VUE_APP_BASE_API,
@@ -10,10 +10,7 @@ const http = axios.create({
 // 请求参数处理
 http.interceptors.request.use(config => {
     // 数据加载动画
-    // app.$vux.loading.show({
-    //     text: '数据加载中……'
-    // });
-    console.log(config)
+    store.state.LoadingShow = true
     config.method === 'post'
         ? config.data = qs.stringify({...config.data})
         : config.params = {...config.params};
@@ -36,6 +33,8 @@ http.interceptors.response.use(
         // 成功请求到数据
         //这里根据后端提供的数据进行对应的处理
         if (response.data.msg === "ok") {
+            store.state.LoadingShow = false
+            console.log(store)
             return response.data;
         } else {
         //常规错误处理

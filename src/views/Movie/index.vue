@@ -16,6 +16,7 @@
       </router-link>
     </div>
 
+
     <keep-alive>
       <router-view />
     </keep-alive>
@@ -35,12 +36,18 @@ export default {
     Header,
     Tabbar
   },
-  created() {
+  mounted() {
     let fuc = getCityList({
       msg : 'ok'
+    }).then(()=>{
+
     })
-    // this.$axios.get('/apis/4/news/latest')
-  }
+  },
+  data() {
+    return {
+      isShow:'false'    
+    }
+  },
 };
 </script>
 

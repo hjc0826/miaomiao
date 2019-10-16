@@ -6,7 +6,7 @@
     <div class="info_list">
       <h2>
             {{MovieItem.nm}}
-            <img :src="MovieItem.version ? '../../assets/imges/imax.png' : '' " alt=""/>
+            <img :src="MovieItem.version ? imgs.img : '' " alt=""/>
       </h2>
       <p>
         观众评价
@@ -20,12 +20,20 @@
 </template>
 
 <script>
+import img from '../../assets/imges/imax.png'
 export default {
   name: "MovieItem",
   props:{
     MovieItem : Object,
     tag :String
-  }
+  },
+  data() {
+    return {
+      imgs : {
+        img
+      }
+    }
+  },
 };
 </script>
 

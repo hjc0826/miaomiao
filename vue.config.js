@@ -1,6 +1,4 @@
 module.exports = {
-  // publicPath:'',
-  // assetsDir: 'static',
   configureWebpack: config => {
     require('vux-loader').merge(config, {
       options: {},

@@ -1,5 +1,5 @@
 <template>
-  <div>
+  <div id="cinema">
     <Header title="我的影院" />
     <div class="content">
       <div class="cinema_menu">
@@ -37,6 +37,9 @@ export default {
 </script>
 
 <style scoped>
+#cinema{
+  height: 100%;
+}
 .content {
   display: flex;
   overflow: auto;

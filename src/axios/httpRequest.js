@@ -3,6 +3,7 @@ import qs from 'qs'
 import store from '@/store'
 
 const http = axios.create({
+    // 在axios请求之前在请求路径中添加baseurl
     baseURL: process.env.VUE_APP_BASE_API,
     timeout: 5000 
 })

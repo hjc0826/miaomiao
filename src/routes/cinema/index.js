@@ -13,6 +13,10 @@ export default {
         {
             path : 'feature',
             component : ()=> import('@/components/feature')
+        },
+        {
+            path : '/cinema',
+            redirect :'/cinema/allcity'
         }
     ]
 }

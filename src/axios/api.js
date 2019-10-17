@@ -27,3 +27,11 @@ export const getComingsoon = data => {
     })
 }
 
+// 获取影院信息
+export const cinemaList = data => {
+    return http({
+        url:'/cinemaList?cityId=40',
+        method : 'get',
+        data
+    })
+}

@@ -6,7 +6,7 @@
 
 <script>
 import MovieItem from "@/components/movieItem"
-import {getComingsoon} from '@/axios/api'
+import { getComingsoon } from '@/axios/api'
 export default {
   name: "Comingsoon",
   components: {
@@ -14,14 +14,29 @@ export default {
   },
   data(){
     return{
-      ComingMovieData : []
+      ComingMovieData : [],
+      ajaxCurrentId : this.$store.state.currentId
+    }
+  },
+  methods: {
+    // 根据id发送对应请求
+    getComing(item){
+      getComingsoon({cityId : item}).then(res => {
+      this.ComingMovieData = res.data.comingList;
+    })
     }
   },
   mounted() {
-    getComingsoon().then(res => {
-      this.ComingMovieData = res.data.comingList;
-    })
+    this.getComing(this.$store.state.currentId.cityId)
   },
+  watch: {
+    ajaxCurrentId:{
+      handler:function(){
+        this.getComing(this.ajaxCurrentId.cityId)
+      },
+      deep:true
+    }
+  }
 };
 </script>
 

@@ -12,6 +12,7 @@ const http = axios.create({
 http.interceptors.request.use(config => {
     // 数据加载动画
     store.state.LoadingShow = true
+    console.log(config)
     config.method === 'post'
         ? config.data = qs.stringify({...config.data})
         : config.params = {...config.params};

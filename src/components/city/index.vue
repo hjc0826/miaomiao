@@ -4,11 +4,11 @@
       <div class="city_hot">
         <h2>热门城市</h2>
         <ul class="clearfix">
-          <li v-for="item in hotCity" :key="item.id">{{item.nm}}</li>
+          <li v-for="item in hotCity" :key="item.id" @click="changeToMovie(item)">{{item.nm}}</li>
         </ul>
       </div>
       <div class="city_sort">
-          <IndexCity v-for="(item,index) in indexCity" :key="index" :itemData="item"/>
+          <IndexCity v-for="(item) in indexCity" :key="item.id" :itemData="item"/>
       </div>
     </div>
     <CityList :index="indexCity"/>
@@ -18,7 +18,7 @@
 <script>
 import IndexCity from './components/index_city'
 import CityList from './components/city_list'
-import { getCityList } from '../../axios/api'
+import { getCityList,getMovieInfo } from '../../axios/api'
 export default {
     name : 'city',
     data() {
@@ -72,9 +72,18 @@ export default {
           }
           return true
         }
+        // 数组排序
         this.indexCity.sort((a, b) => a.index.localeCompare(b.index, 'en', {sensitivity: 'base'}))
-      }
-      
+      },
+      // 热门城市id
+      changeToMovie(item){
+        this.$router.replace({path : '/movie/nowplaying'})
+        // 改变全局的id值
+        this.$store.commit('ChangeCurrenId',{
+          id : item.id,
+          nm : item.nm
+        })
+      },
     },
 };
 </script>

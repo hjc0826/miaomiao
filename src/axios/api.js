@@ -1,11 +1,11 @@
 import http from './httpRequest.js'
 
 // 获取电影信息
-export const getMovieInfo = data => {
+export const getMovieInfo = params => {
     return http({
-        url:'/movieOnInfoList?cityId=1',
+        url:'/movieOnInfoList',
         method : 'get',
-        data
+        params
     })
 }
 
@@ -19,11 +19,11 @@ export const getCityList = data => {
 }
 
 //获取即将上映
-export const getComingsoon = data => {
+export const getComingsoon = params => {
     return http({
-        url:'/movieComingList?cityId=1',
+        url:'/movieComingList',
         method : 'get',
-        data
+        params
     })
 }
 

@@ -4,7 +4,7 @@
   
     <div class="movie_menu">
       <router-link class="city_name" to="/movie/city" tag="div">
-        <span>北京</span>
+        <span>{{cityName.nm}}</span>
         <i class="iconfont icon-xia"></i>
       </router-link>
       <div class="hot_switch">
@@ -15,7 +15,6 @@
         <i class="iconfont icon-tubiaolunkuo-"></i>
       </router-link>
     </div>
-
 
     <keep-alive>
       <router-view />
@@ -37,15 +36,12 @@ export default {
     Tabbar
   },
   mounted() {
-    let fuc = getCityList({
-      msg : 'ok'
-    }).then(()=>{
-
-    })
+    
   },
   data() {
     return {
-      isShow:'false'    
+      isShow:'false',
+      cityName : this.$store.state.currentId   
     }
   },
 };

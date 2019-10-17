@@ -2,7 +2,7 @@
   <div class="index_card">
     <h2>{{itemData.index}}</h2>
     <ul>
-        <li v-for="item in itemData.list" :key="item.id">{{item.nm}}</li>
+        <li v-for="item in itemData.list" :key="item.id" @click="click(item)">{{item.nm}}</li>
     </ul>
   </div>
 </template>
@@ -17,9 +17,17 @@ export default {
   created() {
     
   },
+  mounted() {
+  },
   data() {
     return {
       cityList : null
+    }
+  },
+  methods: {
+    // 调用父组件的方法3中 
+    click(item){
+      this.$parent.changeToMovie(item)
     }
   },
 };

@@ -7,13 +7,17 @@
 </template>
 
 <script>
+import {getMovieInfo} from '@/axios/api'
 export default {
   name: "CityList",
   props:{
     index:{
       type : [Object,Array]
     }
-  }
+  },
+  methods: {
+    
+  },
 };
 </script>
 

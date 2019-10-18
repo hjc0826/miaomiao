@@ -1,19 +1,20 @@
 <template>
-    <header id="header">
-        <h1>{{title}}</h1>
-    </header>
+  <header id="header">
+    <slot></slot>
+    <h1>{{title}}</h1>
+  </header>
 </template>
 
 <script>
 export default {
-    name : 'Header',
-    props:{
-        title:{
-            type:String,
-            default:'喵喵电影'
-        }
+  name: "Header",
+  props: {
+    title: {
+      type: String,
+      default: "喵喵电影"
     }
-}
+  }
+};
 </script>
 
 <style scoped>
@@ -25,6 +26,13 @@ export default {
         border-bottom: 1px solid #e54847;
         position: relative;
         z-index: 10;
+    }
+    #header i {
+        position: absolute;
+        left: 5px;
+        top: 50%;
+        margin-top: -13px;
+        font-size: 26px;
     }
     #header h1{
         font-size: 18px;

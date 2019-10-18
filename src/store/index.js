@@ -6,11 +6,13 @@ Vue.use(Vuex)
 export default new Vuex.Store({
     state: {
         LoadingShow : false,
+        isChangeCity : false,
         // 默认
         currentId : { 
             cityId:1,
             nm : '北京'
-        }
+        },
+        FilmDetails : null
     },
     mutations: {
         ChangeLoading(state){
@@ -19,6 +21,12 @@ export default new Vuex.Store({
         ChangeCurrenId(state,payload){
             state.currentId.cityId = payload.id,
             state.currentId.nm = payload.nm
+        },
+        ChangeCity(state){
+            !state.isChangeCity
+        },
+        ChangeDetailId(state,payload){
+            state.FilmDetails = payload.id
         }
     },
     actions: {

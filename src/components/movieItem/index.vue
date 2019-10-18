@@ -1,6 +1,6 @@
 <template>
   <div class="movie_item">
-    <div class="pic_show">
+    <div class="pic_show" @click="toFilmDetail">
         <img :src="MovieItem.img | setWH('128.180')" alt=""/>
     </div>
     <div class="info_list">
@@ -33,6 +33,17 @@ export default {
         img
       }
     }
+  },
+  methods: {
+    toFilmDetail(){
+      // this.$store.commit('ChangeDetailId',{
+      //   id : this.MovieItem.id
+      // })
+      this.$router.push({
+        path : '/detail',
+        query: {id:this.MovieItem.id}
+      })
+    },
   },
 };
 </script>

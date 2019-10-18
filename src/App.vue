@@ -1,18 +1,21 @@
 <template>
   <div id="app">
     <Loading v-if="isShow" :msg="'数据正在加载...'"/>
-    <keep-alive>
-      <router-view />
-    </keep-alive>
+    <CurrentPosition :city="'北京'" v-if="this.$store.state.isChangeCity"/>
+    <!-- <keep-alive> -->
+      <router-view/>
+    <!-- </keep-alive> -->
   </div>
 </template>
 
 <script>
 import Loading from '@/components/loading'
+import CurrentPosition from '@/components/getCurrentPosition'
 export default {
   name : 'App' ,
   components : {
-    Loading
+    Loading,
+    CurrentPosition
   },
   data() {
     return {
@@ -27,5 +30,6 @@ export default {
 }
 </script>
 
-<style>
+<style lang="stylus">
+  
 </style>

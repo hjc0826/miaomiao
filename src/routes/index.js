@@ -14,8 +14,12 @@ export default new Router({
     CinemaRouter,
     MineRouter,
     {
-      path : '/*',
+      path : '/',
       redirect : '/movie'
+    },
+    {
+      path : '/detail',
+      component :()=> import('@/components/filmDetails')
     }
   ]
 })

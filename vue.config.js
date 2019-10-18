@@ -1,16 +1,11 @@
+const path = require('path')
+
 module.exports = {
   // publicPath:'./',
   assetsDir:'static',
-  configureWebpack: config => {
-    require('vux-loader').merge(config, {
-      options: {},
-      plugins: ['vux-ui']
-    })
-    // config.module.rules.push({
-    //   test : '/\.css$/i',
-    //   use :['handlebars-loader','extract-loader','css-loader']
-    // })
-    console.log(config)
+  chainWebpack: config => {
+    const types = ['vue-modules', 'vue', 'normal-modules', 'normal']
+    types.forEach(type => addStyleResource(config.module.rule('stylus').oneOf(type)))
   },
   // 接口请求代理 替换apis为target
   devServer: {
@@ -26,4 +21,14 @@ module.exports = {
       },
     }
   }
+}
+
+function addStyleResource (rule) {
+  rule.use('style-resource')
+    .loader('style-resources-loader')
+    .options({
+      patterns: [
+        path.resolve(__dirname, './src/styles/imports.styl'),
+      ],
+    })
 }

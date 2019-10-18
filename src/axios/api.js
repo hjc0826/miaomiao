@@ -35,3 +35,21 @@ export const cinemaList = data => {
         data
     })
 }
+
+// 获取用户所在城市
+export const getLocation = data => {
+    return http({
+        url:'/cinemaList?cityId=40',
+        method : 'get',
+        data
+    })
+}
+
+// 获取电影详情
+export const getDetailMovie = params => {
+    return http({
+        url:'/detailmovie',
+        method : 'get',
+        params
+    })
+}

@@ -10,7 +10,7 @@
       </h2>
       <p>
         观众评价
-        <span class="grade">{{MovieItem.sc}}</span>
+        <span class="grade">{{ MovieItem.sc }}</span>
       </p>
       <p>{{MovieItem.star}}</p>
       <p>{{MovieItem.showInfo}}</p>
@@ -36,12 +36,11 @@ export default {
   },
   methods: {
     toFilmDetail(){
-      // this.$store.commit('ChangeDetailId',{
-      //   id : this.MovieItem.id
-      // })
       this.$router.push({
         path : '/detail',
-        query: {id:this.MovieItem.id}
+        query: {
+              id:this.MovieItem.id
+                }
       })
     },
   },

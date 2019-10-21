@@ -5,6 +5,11 @@ import store from './store'
 import * as filters from './filters'
 import './assets/css/common.css'
 import './assets/css/iconfont.css'
+import Vant from 'vant'
+import { Row, Col } from 'vant'
+
+
+Vue.use(Row).use(Col);
 
 Object.keys(filters).forEach(key => Vue.filter(key,filters[key]))
 

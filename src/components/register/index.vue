@@ -77,7 +77,7 @@ export default {
         })
         .then(response => {
           if (response.data.msg == "ok") {
-            console.log("success");
+            console.log("success"); 
             const user = {
               name : this.userDate.name,
               sex  : this.userDate.radio

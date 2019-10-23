@@ -7,9 +7,12 @@ import './assets/css/common.css'
 import './assets/css/iconfont.css'
 import Vant from 'vant'
 import { Row, Col } from 'vant'
+import axios from 'axios'
 
 
 Vue.use(Row).use(Col);
+
+Vue.prototype.$axios = axios
 
 Object.keys(filters).forEach(key => Vue.filter(key,filters[key]))
 

@@ -11,11 +11,13 @@
 <script>
 import Loading from '@/components/loading'
 import CurrentPosition from '@/components/getCurrentPosition'
+import Tabbar from '@/components/tabBar'
 export default {
   name : 'App' ,
   components : {
     Loading,
-    CurrentPosition
+    CurrentPosition,
+    Tabbar
   },
   data() {
     return {

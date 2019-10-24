@@ -14,7 +14,9 @@ Vue.use(Row).use(Col);
 
 Vue.prototype.$axios = axios
 
+// 注册为全局过滤器 
 Object.keys(filters).forEach(key => Vue.filter(key,filters[key]))
+
 
 Vue.config.productionTip = false
 

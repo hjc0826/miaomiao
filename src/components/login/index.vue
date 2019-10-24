@@ -1,14 +1,15 @@
 <template>
   <div>
+    <Header :title="'登陆'" />
     <div class="login_body">
       <div>
-        <input type="text" placeholder="账户名/手机号/Email" class="login_text" />
+        <input type="text" placeholder="账户名/手机号/Email" class="login_text" v-model="user.name"/>
       </div>
       <div>
-        <input type="password" name id class="login_text" placeholder="请输入您的密码" />
+        <input type="password" name id class="login_text" placeholder="请输入您的密码" v-model="user.password"/>
       </div>
       <div class="login_btn">
-        <input type="submit" value="登陆" />
+        <input type="submit" value="登陆" @click="loginVerify"/>
       </div>
       <div class="login_link">
         <router-link to="/mine/register">立即注册</router-link>
@@ -24,10 +25,40 @@ import Header from "@/components/header";
 import Tabbar from "@/components/tabBar";
 export default {
   name: "Login",
+  data() {
+    return {
+      user : {
+        name : '',
+        password : ''
+      }
+    }
+  },
   components: {
     Header,
     Tabbar
-  }
+  },
+  methods: {
+    loginVerify(){
+      this.$axios.post('http://127.0.0.1:3000/api2/user/login',{
+        name : this.user.name,
+        password : this.user.password
+      }).then(res => {
+        console.log(res)
+        let user = {
+          name : res.data.info.name,
+          sex : res.data.info.sex
+        }
+        if(res.data.status == 0){
+          // 将用户信息存入sessionStorage中 从后台获取数据
+          sessionStorage.setItem("user",JSON.stringify(user));
+          this.$router.replace('/mine/loginout')
+        }
+        else{
+          alert('账号密码错误')
+        }
+      })
+    }
+  },
 };
 </script>
 

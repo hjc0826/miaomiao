@@ -8,6 +8,7 @@ Vue.use(Router)
 
 export default new Router({
   mode: 'history',
+  // 在api接口之前加上apis 然后在代理中被替换
   base: process.env.BASE_URL,
   routes: [
     MovieRouter,

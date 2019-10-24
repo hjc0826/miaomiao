@@ -14,9 +14,13 @@ export default {
             path: 'findPassword',
             component: () => import('@/components/findPassword')
         }, 
+        // {
+        //     path: '/mine',
+        //     redirect: '/mine/login',
+        // }
         {
-            path: '/mine',
-            redirect: '/mine/login',
+            path:'loginout',
+            component : () => import('@/components/loginout')
         }
     ]
 }

@@ -1,6 +1,5 @@
 <template>
   <div>
-    <Header title="我的喵喵" />
     <keep-alive>
       <router-view />
     </keep-alive>

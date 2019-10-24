@@ -36,11 +36,10 @@ http.interceptors.response.use(
         //这里根据后端提供的数据进行对应的处理
         if (response.data.msg === "ok") {
             store.state.LoadingShow = false
-            console.log(store)
             return response.data;
         } else {
         //常规错误处理
-           console.log('error infomation')
+           console.log('error 错误的返回数据类型')
         }
     },
         //响应错误处理
@@ -52,10 +51,6 @@ http.interceptors.response.use(
         let text = JSON.parse(JSON.stringify(error)).response.status === 404
             ? '404'
             : '网络异常，请重试';
-        // app.$vux.toast.show({
-        //     type: 'warn',
-        //     text: text
-        // });
  
         return Promise.reject(error)
     }

@@ -1,10 +1,10 @@
 <template>
     <div class="position_body">
         <h2>定位</h2>
-        <p>{{city}}</p>
+        <p>{{city.nm}}</p>
         <div>
-            <div>切换</div>
-            <div>取消定位</div>
+            <div @click="jumpPlace">切换</div>
+            <div @click="rejectJump">取消定位</div>
         </div>
     </div>
 </template>
@@ -13,8 +13,17 @@
 export default {
     name : 'CurrentPosition',
     props: {
-        city : String
-    }
+        city : Object
+    },
+    methods: {
+        jumpPlace(){
+            this.$store.commit('ChangeCurrenId',this.city)
+            this.$store.state.isChangeCity = false
+        },
+        rejectJump(){
+            this.$store.state.isChangeCity = null
+        }
+    },
 }
 </script>
 

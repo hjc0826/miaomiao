@@ -9,6 +9,10 @@
         <i class="iconfont icon-yingyuan active"></i>
         <p>影院</p>
       </router-link>
+      <router-link tag="li" to="/shopping">
+        <i class="iconfont icon-qicheqianlian-"></i>
+        <p>购物车</p>
+      </router-link>
       <router-link tag="li" :to="url" :class="linkClass">
         <i class="iconfont icon-weibiaoti-"></i>
         <p>我的</p>

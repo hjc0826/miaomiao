@@ -1,7 +1,7 @@
 <template>
   <div id="app">
     <Loading v-if="isShow" :msg="'数据正在加载...'"/>
-    <CurrentPosition :city="'北京'" v-if="this.$store.state.isChangeCity"/>
+    <CurrentPosition :city="this.$store.state.currentCity" v-if="this.$store.state.isChangeCity"/>
     <!-- <keep-alive> -->
       <router-view/>
     <!-- </keep-alive> -->

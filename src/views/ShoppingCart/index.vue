@@ -1,12 +1,20 @@
 <template>
     <div class="shopping_body">
-        购物车
+        <Header :title="'我的购物车'" />
+            我是购物车车
+        <Tabbar />
     </div>
 </template>
 
 <script>
+import Header from '@/components/header'
+import Tabbar from '@/components/tabBar'
 export default {
-    name : 'ShoppingCart'
+    name : 'ShoppingCart',
+    components:{    
+        Header,
+        Tabbar
+    }
 }
 </script>
 

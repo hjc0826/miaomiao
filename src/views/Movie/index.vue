@@ -1,7 +1,6 @@
 <template>
   <div>
     <Header title="喵喵电影"></Header>
-  
     <div class="movie_menu">
       <router-link class="city_name" to="/movie/city" tag="div">
         <span>{{cityName.nm}}</span>
@@ -28,7 +27,7 @@
 <script>
 import Header from "@/components/header"
 import Tabbar from "@/components/tabBar"
-import { getCityList } from '../../axios/api.js'
+import { getCityList,getLocation} from '../../axios/api.js'
 export default {
   name: "Movie",
   components: {
@@ -36,7 +35,11 @@ export default {
     Tabbar
   },
   mounted() {
-    
+    // 获取用户位置信息
+    getLocation().then(res => {
+      console.log(res.data)
+      this.$store.commit('ChangeCity',res.data)
+    })
   },
   data() {
     return {

@@ -37,18 +37,27 @@ export const cinemaList = data => {
 }
 
 // 获取用户所在城市
-export const getLocation = data => {
-    return http({
-        url:'/cinemaList?cityId=40',
-        method : 'get',
-        data
-    })
-}
+// export const getLocation = data => {
+//     return http({
+//         url:'/cinemaList?cityId=40',
+//         method : 'get',
+//         data
+//     })
+// }
 
 // 获取电影详情
 export const getDetailMovie = params => {
     return http({
         url:'/detailmovie',
+        method : 'get',
+        params
+    })
+}
+
+// 获取所在城市位置
+export const getLocation = params => {
+    return http({
+        url:'/getLocation',
         method : 'get',
         params
     })

@@ -12,7 +12,9 @@ export default new Vuex.Store({
             cityId:1,
             nm : '北京'
         },
-        FilmDetails : null
+        FilmDetails : null,
+        // 当前城市Id
+        currentCity : {}
     },
     mutations: {
         ChangeLoading(state){
@@ -22,8 +24,9 @@ export default new Vuex.Store({
             state.currentId.cityId = payload.id,
             state.currentId.nm = payload.nm
         },
-        ChangeCity(state){
-            !state.isChangeCity
+        ChangeCity(state,payload){
+            state.isChangeCity = true;
+            state.currentCity = payload
         },
         ChangeDetailId(state,payload){
             state.FilmDetails = payload.id

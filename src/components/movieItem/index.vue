@@ -1,12 +1,12 @@
 <template>
   <div class="movie_item">
     <div class="pic_show" @click="toFilmDetail">
-        <img :src="MovieItem.img | setWH('128.180')" alt=""/>
+      <img :src="MovieItem.img | setWH('128.180')" alt />
     </div>
     <div class="info_list">
       <h2>
-            {{MovieItem.nm}}
-            <img :src="MovieItem.version ? imgs.img : '' " alt=""/>
+        {{MovieItem.nm}}
+        <img :src="MovieItem.version ? imgs.img : '' " alt />
       </h2>
       <p>
         观众评价
@@ -15,35 +15,42 @@
       <p>{{MovieItem.star}}</p>
       <p>{{MovieItem.showInfo}}</p>
     </div>
-    <div class="btn_mall">{{tag}}</div>
+    <div class="btn_mall" @click="buyTickeks">{{tag}}</div>
   </div>
 </template>
 
 <script>
-import img from '../../assets/imges/imax.png'
+import img from "../../assets/imges/imax.png";
 export default {
   name: "MovieItem",
-  props:{
-    MovieItem : Object,
-    tag :String
+  props: {
+    MovieItem: Object,
+    tag: String
   },
   data() {
     return {
-      imgs : {
+      imgs: {
         img
-      }
-    }
+      },
+     
+    };
   },
   methods: {
-    toFilmDetail(){
+    toFilmDetail() {
       this.$router.push({
-        path : '/detail',
+        path: "/detail",
         query: {
-              id:this.MovieItem.id
-                }
-      })
+          id: this.MovieItem.id
+        }
+      });
     },
+    buyTickeks(){
+      this.$emit('buytickeks',this.MovieItem)
+    }
   },
+  components: {
+    
+  }
 };
 </script>
 
@@ -55,7 +62,7 @@ export default {
   border-bottom: 1px solid #e6e6e6;
   padding-bottom: 10px;
 }
-.movie_item .pic_show img{
+.movie_item .pic_show img {
   width: 64px;
   height: 90px;
 }

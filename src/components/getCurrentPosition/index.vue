@@ -18,7 +18,7 @@ export default {
     methods: {
         jumpPlace(){
             this.$store.commit('ChangeCurrenId',this.city)
-            this.$store.state.isChangeCity = false
+            this.$store.state.isChangeCity = null
         },
         rejectJump(){
             this.$store.state.isChangeCity = null

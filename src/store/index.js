@@ -14,7 +14,9 @@ export default new Vuex.Store({
         },
         FilmDetails : null,
         // 当前城市Id
-        currentCity : {}
+        currentCity : {},
+        lock :true,
+        islogin : 0
     },
     mutations: {
         ChangeLoading(state){

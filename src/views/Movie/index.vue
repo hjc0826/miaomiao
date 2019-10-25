@@ -36,10 +36,13 @@ export default {
   },
   mounted() {
     // 获取用户位置信息
-    getLocation().then(res => {
-      console.log(res.data)
-      this.$store.commit('ChangeCity',res.data)
-    })
+    if(this.$store.state.lock){
+      getLocation().then(res => {
+        console.log(res.data)
+        this.$store.commit('ChangeCity',res.data)
+        this.$store.state.lock = false
+      })
+    }
   },
   data() {
     return {

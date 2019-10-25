@@ -1,12 +1,27 @@
 <template>
   <div>
     <div class="movieList">
-      <MovieItem v-for="item in MovieInfo" :key="item.id" :MovieItem="item" :tag="'购买'"/>
+      <MovieItem v-for="item in MovieInfo" :key="item.id" :MovieItem="item" :tag="'购买'" @buytickeks="buyTickeks"/>
+      <van-sku
+        v-model="show"
+        :sku="skuData.sku"
+        :goods="skuData.goods_info"
+        :goods-id="skuData.goods_id"
+        :hide-stock="skuData.sku.hide_stock"
+        :quota="skuData.quota"
+        :quota-used="skuData.quota_used"
+        :show-soldout-sku="false"
+        hide-quota-text
+        safe-area-inset-bottom
+        @buy-clicked="onBuyClicked"
+        @add-cart="onAddCartClicked"
+      />
     </div>
   </div>
 </template>
 
 <script>
+import { Popup, Sku, Toast } from "vant";
 import MovieItem from "@/components/movieItem";
 import { getMovieInfo } from "../../axios/api";
 export default {
@@ -19,7 +34,83 @@ export default {
   data() {
     return {
       MovieInfo: [],
-      ajaxCurrentId: this.$store.state.currentId
+      ajaxCurrentId: this.$store.state.currentId,
+      show: false,
+      buyMovieItem : {},
+      skuData: {
+        goods_id: "",
+        quota: 15,
+        quota_used: 0,
+        goods_info: {
+          title: "电影图片",
+          picture:"",
+          price: 1
+        },
+        sku: {
+          price: "29.00",
+          stock_num: 116,
+          none_sku: false,
+          hide_stock: false,
+          collection_id: 2261,
+          tree: [
+            {
+              k: "电影",
+              k_id: "1",
+              v: [
+                {
+                  id: "30349",
+                  name: ""
+                }
+              ],
+              k_s: "s1",
+              count: 1
+            },
+            {
+              k: "类型",
+              k_id: "2",
+              v: [
+                {
+                  id: "1193",
+                  name: "IMAX"
+                },
+                {
+                  id: "1194",
+                  name: "3D"
+                }
+              ],
+              k_s: "s2",
+              count: 2
+            }
+          ],
+          list: [
+            {
+              id: 2259,
+              price: 100,
+              discount: 100,
+              code: "",
+              s1: "30349",
+              s2: "1193",
+              stock_num: 110,
+              goods_id: 946755,
+              price: "3500"
+            },
+            {
+              id: 2260,
+              price: 100,
+              discount: 100,
+              code: "",
+              s1: "30349",
+              s2: "1194",
+              s3: "0",
+              s4: "0",
+              s5: "0",
+              stock_num: 6,
+              goods_id: 946755,
+              price: "6500"
+            }
+          ]
+        }
+      }
     };
   },
   methods: {
@@ -32,12 +123,12 @@ export default {
     // 定位城市位置
     cityPosition() {
       console.log("位置");
-      getLocation()
+      getLocation();
       function getLocation() {
         if (navigator.geolocation) {
-          navigator.geolocation.getCurrentPosition(showPosition)
+          navigator.geolocation.getCurrentPosition(showPosition);
         } else {
-          alert('该浏览器不支持定位，不好意思')
+          alert("该浏览器不支持定位，不好意思");
         }
       }
       function showPosition(position) {
@@ -50,11 +141,40 @@ export default {
           var city = result.addressComponents.city;
           console.log(result);
         });
-      };
+      }
     },
+    onBuyClicked(data){
+      console.log(data)
+    },
+    onAddCartClicked(data){
+      console.log(data)
+      // 读取sessionStorage中user中的用户对象
+      console.log(JSON.parse(sessionStorage.getItem("user")))
+      let index = JSON.parse(sessionStorage.getItem("user"));
+      console.log(index)
+      index.shoppingCart.push({
+        id : data.goodsId
+      })
+      sessionStorage.setItem("user", JSON.stringify(index));
+    },
+    buyTickeks(payload){
+      if(!this.$store.state.islogin){
+        alert('没登陆呢')
+        return
+      }
+      this.show = !this.show
+      this.buyMovieItem = payload
+      this.skuData.sku.tree[0].v[0].name = payload.nm
+      this.skuData.goods_id = payload.id
+      this.skuData.goods_info.picture = payload.img.replace(/w\.h/,'160.180')
+      console.log(this.buyMovieItem)
+    }
   },
   components: {
-    MovieItem
+    MovieItem,
+    "van-popup": Popup,
+    "van-sku": Sku,
+    Toast
   },
   watch: {
     // 监听store中数据的变化 然后调用函数 因为keepalive在路由切换的时候就不能继续调用方法

@@ -5,7 +5,6 @@ import store from './store'
 import * as filters from './filters'
 import './assets/css/common.css'
 import './assets/css/iconfont.css'
-import Vant from 'vant'
 import { Row, Col } from 'vant'
 import axios from 'axios'
 

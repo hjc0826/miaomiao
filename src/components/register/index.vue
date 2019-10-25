@@ -80,7 +80,8 @@ export default {
             console.log("success"); 
             const user = {
               name : this.userDate.name,
-              sex  : this.userDate.radio
+              sex  : this.userDate.radio,
+              shoppingCart:[]
             }
             // 将用户信息存入sessionstorge中
             sessionStorage.setItem("user",JSON.stringify(user));

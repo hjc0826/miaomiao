@@ -44,9 +44,12 @@ export default {
         password : this.user.password
       }).then(res => {
         console.log(res)
+        // 登陆成功后状态码变为1
+        this.$store.state.islogin = 1
         let user = {
           name : res.data.info.name,
-          sex : res.data.info.sex
+          sex : res.data.info.sex,
+          shoppingCart:[]
         }
         if(res.data.status == 0){
           // 将用户信息存入sessionStorage中 从后台获取数据

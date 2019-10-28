@@ -76,7 +76,6 @@ export default {
       });
     },
     deleteShoppingItem(payload){
-      console.log(payload)
       this.deleteId(payload)
     }
   },

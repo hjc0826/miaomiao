@@ -67,10 +67,8 @@ export default {
       });
     },
     callback(data) {
-        console.log(1)
     },
     deleteShopping(payload){
-        console.log(payload)
         this.$emit("deleteShoppingItem",payload)
     }
   },
@@ -84,7 +82,6 @@ export default {
     }
   },
   mounted() {
-    console.log("this is current swiper instance object", this.swiper);
     //   this.swiper.slideTo(3, 1000, false)
   }
 };

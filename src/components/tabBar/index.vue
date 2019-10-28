@@ -50,18 +50,20 @@ export default {
 <style scoped>
 #footer {
   width: 100%;
-  height: 50px;
+  height: 53px;
   background-color: white;
   border-top: 2px solid #ebe8e3;
   position: fixed;
   left: 0;
   bottom: 0;
+  z-index: 999
 }
 #footer ul {
   display: flex;
   text-align: center;
-  height: 50px;
+  height: 55px;
   align-items: center;
+  z-index: 999;
 }
 #footer ul li {
   flex: 1;

@@ -20,6 +20,7 @@
 </template>
 
 <script>
+// 引入图片
 import img from "../../assets/imges/imax.png";
 export default {
   name: "MovieItem",

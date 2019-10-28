@@ -147,17 +147,19 @@ export default {
       console.log(data)
     },
     onAddCartClicked(data){
-      console.log(data)
       // 读取sessionStorage中user中的用户对象
       console.log(JSON.parse(sessionStorage.getItem("user")))
       let index = JSON.parse(sessionStorage.getItem("user"));
       console.log(index)
+      // 商品的id 和 商品选择数量
       index.shoppingCart.push({
-        id : data.goodsId
+        id : data.goodsId,
+        num : data.selectedNum
       })
       sessionStorage.setItem("user", JSON.stringify(index));
     },
     buyTickeks(payload){
+      // 判断是否登陆 查看状态码
       if(!this.$store.state.islogin){
         alert('没登陆呢')
         return

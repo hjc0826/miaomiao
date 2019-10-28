@@ -16,7 +16,7 @@ export default new Vuex.Store({
         // 当前城市Id
         currentCity : {},
         lock :true,
-        islogin : 0
+        islogin : 1
     },
     mutations: {
         ChangeLoading(state){

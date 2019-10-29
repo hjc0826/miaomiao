@@ -50,7 +50,9 @@ http.interceptors.response.use(
         let text = JSON.parse(JSON.stringify(error)).response.status === 404
             ? '404'
             : '网络异常，请重试';
- 
+        
+        // console.log(text)
+
         return Promise.reject(error)
     }
 );

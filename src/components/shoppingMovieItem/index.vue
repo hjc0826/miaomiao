@@ -38,7 +38,7 @@ import img from "../../assets/imges/imax.png";
 import { swiper, swiperSlide } from "vue-awesome-swiper";
 import "swiper/css/swiper.css";
 export default {
-  name: "MovieItem",
+  name: "ShoppingMovieItem",
   props: {
     MovieItem: Object,
     tickes: [String, Number]

@@ -9,7 +9,7 @@
       @deleteShoppingItem = "deleteShoppingItem"
     />
     </div>
-    <van-submit-bar :price="3050" button-text="提交订单" @submit="onSubmit" />
+    <van-submit-bar :price="allPrice" button-text="提交订单" @submit="onSubmit" />
     <Tabbar />
   </div>
 </template>
@@ -32,12 +32,14 @@ export default {
     return {
       shoppingData: "",
       //   元数据
-      sourceData: []
+      sourceData: [],
+      // allPrice : ''
     };
   },
   methods: {
     onSubmit() {
       console.log("提交订单");
+      console.log(this.shoppingData.shoppingCart)
     },
     matchId(item) {
       this.sourceData.forEach(element => {
@@ -72,7 +74,6 @@ export default {
         this.shoppingData.shoppingCart.forEach(item => {
           this.matchId(item);
         });
-        console.log(this.shoppingData.shoppingCart);
       });
     },
     deleteShoppingItem(payload){
@@ -81,6 +82,21 @@ export default {
   },
   mounted() {
     this.shoppingMovieData()
+  },
+  computed: {
+    // 价钱总和
+    allPrice : function(cur,old){
+      var sum = 0;
+      if(this.shoppingData.shoppingCart){
+        this.shoppingData.shoppingCart.forEach(item => {
+          sum += item.num
+        })
+        return sum *100
+      }
+      else{
+        return 
+      }
+    }
   },
   watch: {
     shoppingData: {

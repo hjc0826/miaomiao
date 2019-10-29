@@ -62,3 +62,12 @@ export const getLocation = params => {
         params
     })
 }
+
+//查询电影
+export const inquireMovie = params => {
+    return http({
+        url:'/searchList',
+        method : 'get',
+        params
+    })
+}

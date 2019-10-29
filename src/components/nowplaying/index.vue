@@ -2,6 +2,7 @@
   <div>
     <div class="movieList">
       <MovieItem v-for="item in MovieInfo" :key="item.id" :MovieItem="item" :tag="'购买'" @buytickeks="buyTickeks"/>
+      <!-- 弹出层 -->
       <van-sku
         v-model="show"
         :sku="skuData.sku"
@@ -122,7 +123,6 @@ export default {
     },
     // 定位城市位置
     cityPosition() {
-      console.log("位置");
       getLocation();
       function getLocation() {
         if (navigator.geolocation) {
@@ -139,29 +139,27 @@ export default {
         var myGeo = new BMap.Geocoder();
         myGeo.getLocation(point, function(result) {
           var city = result.addressComponents.city;
-          console.log(result);
         });
       }
     },
     onBuyClicked(data){
-      console.log(data)
+      console.log('购买')
     },
     onAddCartClicked(data){
       // 读取sessionStorage中user中的用户对象
-      console.log(JSON.parse(sessionStorage.getItem("user")))
       let index = JSON.parse(sessionStorage.getItem("user"));
-      console.log(index)
       // 商品的id 和 商品选择数量
       index.shoppingCart.push({
         id : data.goodsId,
         num : data.selectedNum
       })
       sessionStorage.setItem("user", JSON.stringify(index));
+      Toast.success('成功加入购物车');
     },
     buyTickeks(payload){
       // 判断是否登陆 查看状态码
       if(!this.$store.state.islogin){
-        alert('没登陆呢')
+        Toast.fail('请登录后在购买票');
         return
       }
       this.show = !this.show
@@ -169,7 +167,6 @@ export default {
       this.skuData.sku.tree[0].v[0].name = payload.nm
       this.skuData.goods_id = payload.id
       this.skuData.goods_info.picture = payload.img.replace(/w\.h/,'160.180')
-      console.log(this.buyMovieItem)
     }
   },
   components: {
